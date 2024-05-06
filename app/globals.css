@@ -2,32 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* 패딩 삭제 */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* 반응형 적용 */
+html {
+  font-size: 1.5vmin;
+}
+@media (min-width: 640px) {
+  html {
+    font-size: 1vmin;
+  }
+}
+
+/* 스크롤바 숨김 */
+::-webkit-scrollbar {
+  display: none;
+}
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 기본 배경색 적용 */
+html {
+  background-color: #fff3e2;
 }
