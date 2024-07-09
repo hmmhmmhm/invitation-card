@@ -1,7 +1,28 @@
 import { cn } from "@/lib/cn";
 import { IconPhoneCall } from "@tabler/icons-react";
+import Link from "next/link";
 
-export default function LocationSection() {
+export interface LocationSectionProps {
+  locationTitle: string;
+  locationAddress: string;
+  locationTel: string;
+  mapImageUrl: string;
+  tmapUrl?: string;
+  kakaoNaviUrl?: string;
+  naverMapUrl: string;
+  kakaoMapUrl?: string;
+}
+
+export default function LocationSection({
+  locationTitle,
+  locationAddress,
+  locationTel,
+  mapImageUrl,
+  tmapUrl,
+  kakaoNaviUrl,
+  naverMapUrl,
+  kakaoMapUrl,
+}: LocationSectionProps) {
   return (
     <section
       className={cn(
@@ -17,90 +38,108 @@ export default function LocationSection() {
         <div className="flex flex-col text-[2.5rem] text-left">
           <p
             className="mb-4 text-5xl text-balance font-bold"
-            aria-label="잇츠카드 웨딩홀 6층 노블레스홀"
+            aria-label={locationTitle}
           >
-            잇츠카드 웨딩홀 6층 노블레스홀
+            {locationTitle}
           </p>
-          <p aria-label="서울특별시 강남구 논현로 742">
-            서울특별시 강남구 논현로 742
-          </p>
-          <p aria-label="Tel. 02-1234-5678">Tel. 02-1234-5678</p>
+          <p aria-label={locationAddress}>{locationAddress}</p>
+          <p aria-label={`Tel. ${locationTel}`}>Tel. {locationTel}</p>
         </div>
         <div>
-          <button
-            type="button"
-            className="flex justify-center items-center gap-2 w-36 h-36 bg-[#6EBD52] rounded-full shadow-lg"
-            style={{ backgroundColor: "#F9A8D4" }}
-          >
-            <IconPhoneCall
-              size="5rem"
-              stroke={1.5}
-              color="transparent"
-              fill="white"
-              aria-label="예식장에 전화하기"
-            />
-          </button>
+          <Link href={`tel:${locationTel}`}>
+            <button
+              type="button"
+              className="flex justify-center items-center gap-2 w-36 h-36 bg-[#6EBD52] rounded-full shadow-lg"
+              style={{ backgroundColor: "#F9A8D4" }}
+            >
+              <IconPhoneCall
+                size="5rem"
+                stroke={1.5}
+                color="transparent"
+                fill="white"
+                aria-label="예식장에 전화하기"
+              />
+            </button>
+          </Link>
         </div>
       </div>
 
-      <img
-        src="/map.png"
-        className="w-full object-cover"
-        aria-label="예식장 지도"
-      />
+      <Link href={naverMapUrl} target="_blank" rel="noopener noreferrer">
+        <img
+          src={mapImageUrl}
+          className="w-full object-cover sm:rounded-2xl"
+          aria-label="예식장 지도"
+        />
+      </Link>
 
       <div
         className="flex flex-row w-full justify-between items-center p-12 bg-[#FBE2E4] text-[#665743] text-4xl font-bold"
         aria-label="길찾기 앱으로 길찾기"
       >
-        <button
-          className="w-full flex flex-col justify-center items-center gap-8"
-          aria-label="티맵으로 길찾기"
-        >
-          <div
-            className="w-36 h-36 rounded-full bg-slate-500 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url(/icons/tmap.svg)`,
-            }}
-          />
-          <p>티맵</p>
-        </button>
-        <button
-          className="w-full flex flex-col justify-center items-center gap-8"
-          aria-label="카카오내비로 길찾기"
-        >
-          <div
-            className="w-36 h-36 rounded-full bg-slate-500 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url(/icons/kakao-navi.svg)`,
-            }}
-          />
-          <p>카카오내비</p>
-        </button>
-        <button
-          className="w-full flex flex-col justify-center items-center gap-8"
-          aria-label="네이버지도로 길찾기"
-        >
-          <div
-            className="w-36 h-36 rounded-full bg-slate-500 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url(/icons/naver-map.jpg)`,
-            }}
-          />
-          <p>네이버지도</p>
-        </button>
-        <button
-          className="w-full flex flex-col justify-center items-center gap-8"
-          aria-label="카카오맵으로 길찾기"
-        >
-          <div
-            className="w-36 h-36 rounded-full bg-slate-500 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url(/icons/kakao-map.png)`,
-            }}
-          />
-          <p>카카오맵</p>
-        </button>
+        {tmapUrl && (
+          <Link href={tmapUrl} target="_blank" rel="noopener noreferrer">
+            <button
+              className="w-full flex flex-col justify-center items-center gap-8"
+              aria-label="티맵으로 길찾기"
+            >
+              <div
+                className="w-36 h-36 rounded-full bg-slate-500 bg-cover bg-center bg-no-repeat"
+                style={{
+                  backgroundImage: `url(/icons/tmap.svg)`,
+                }}
+              />
+              <p>티맵</p>
+            </button>
+          </Link>
+        )}
+        {kakaoNaviUrl && (
+          <Link href={kakaoNaviUrl} target="_blank" rel="noopener noreferrer">
+            <button
+              className="w-full flex flex-col justify-center items-center gap-8"
+              aria-label="카카오내비로 길찾기"
+            >
+              <div
+                className="w-36 h-36 rounded-full bg-slate-500 bg-cover bg-center bg-no-repeat"
+                style={{
+                  backgroundImage: `url(/icons/kakao-navi.svg)`,
+                }}
+              />
+              <p>카카오내비</p>
+            </button>
+          </Link>
+        )}
+        {naverMapUrl && (
+          <Link href={naverMapUrl} target="_blank" rel="noopener noreferrer">
+            <button
+              className="w-full flex flex-col justify-center items-center gap-8"
+              aria-label="네이버지도로 길찾기"
+            >
+              <div
+                className="w-36 h-36 rounded-full bg-slate-500 bg-cover bg-center bg-no-repeat"
+                style={{
+                  backgroundImage: `url(/icons/naver-map.jpg)`,
+                }}
+              />
+              <p>네이버지도</p>
+            </button>
+          </Link>
+        )}
+        {kakaoMapUrl && (
+          <Link href={kakaoMapUrl} target="_blank" rel="noopener noreferrer">
+            <button
+              className="w-full flex flex-col justify-center items-center gap-8"
+              aria-label="카카오맵으로 길찾기"
+            >
+              <div
+                className="w-36 h-36 rounded-full bg-slate-500 bg-cover bg-center bg-no-repeat"
+                style={{
+                  backgroundImage: `url(/icons/kakao-map.png)`,
+                }}
+              />
+              <p>카카오맵</p>
+            </button>
+          </Link>
+        )}
       </div>
     </section>
   );

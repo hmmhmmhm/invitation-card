@@ -9,9 +9,9 @@ const nanumMyeongjo = Nanum_Myeongjo({
 });
 
 export const metadata: Metadata = {
-  title: "모바일 청첩장",
-  description: "김철수와 김영희의 결혼식에 초대합니다.",
-  abstract: "모바일 청첩장",
+  title: "박성준 · 최지은 청첩장",
+  description: "박성준 · 최지은의 결혼식에 초대합니다.",
+  abstract: "박성준 · 최지은 청첩장",
   keywords: ["웨딩", "결혼식", "청첩장"],
 };
 
@@ -30,9 +30,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <head>
         <Script src="/sakura.min.js" strategy="beforeInteractive" />
+        <Script
+          src="/build/WeddingMarchBuildTest.loader.js"
+          strategy="beforeInteractive"
+        />
         <link rel="stylesheet" href="/sakura.min.css" />
       </head>
 

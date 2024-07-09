@@ -7,6 +7,7 @@ export interface WeddingPhotoSectionProps {
   className?: string;
   width?: number;
   height?: number;
+  onClick?: () => unknown;
 }
 
 export default function WeddingPhotoSection({
@@ -15,13 +16,15 @@ export default function WeddingPhotoSection({
   className,
   width,
   height,
+  onClick,
 }: WeddingPhotoSectionProps) {
   return (
     <section
       className="flex justify-center items-center w-full flex-col font-bold text-5xl text-center color-[#483A33] gap-[12.5rem] mt-24"
       aria-label="청첩장 사진"
+      onClick={onClick}
     >
-      <div className="flex flex-col gap-6 overflow-hidden w-full">
+      <div className="flex flex-col gap-6 overflow-hidden w-full cursor-pointer">
         <Image
           src={src}
           alt={alt}
