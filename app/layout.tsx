@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Nanum_Myeongjo } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 const nanumMyeongjo = Nanum_Myeongjo({
   subsets: ["latin"],
@@ -40,7 +42,10 @@ export default function RootLayout({
         <link rel="stylesheet" href="/sakura.min.css" />
       </head>
 
-      <body className={nanumMyeongjo.className}>{children}</body>
+      <body className={nanumMyeongjo.className}>
+        {children}
+        <ToastContainer />
+      </body>
     </html>
   );
 }

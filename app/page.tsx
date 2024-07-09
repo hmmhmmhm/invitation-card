@@ -11,6 +11,7 @@ import { forceUtc, utcMsOfKorea } from "@/lib/time";
 // import MovieSection from "@/components/MovieSection";
 import LocationSection from "@/components/LocationSection";
 import GameButtonSection from "@/components/GameButtonSection";
+import SendMoneySection from "@/components/SendMoneySection";
 
 const CalendarSection = dynamic(() => import("@/components/CalendarSection"), {
   ssr: false,
@@ -145,6 +146,8 @@ export default function Home() {
           />
         </MovieSection>
         */}
+
+        <SendMoneySection />
 
         <LocationSection
           locationTitle="상록아트홀 로비층 그랜드볼륨홀"
