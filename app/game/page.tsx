@@ -39,9 +39,9 @@ const UnityWebGLPlayer: React.FC = () => {
     }
 
     window.createUnityInstance(document.querySelector("#unity-canvas")!, {
-      dataUrl: "build/WeddingMarchBuildTest.data.br",
-      frameworkUrl: "build/WeddingMarchBuildTest.framework.js.br",
-      codeUrl: "build/WeddingMarchBuildTest.wasm.br",
+      dataUrl: "build/WeddingMarchBuildTest.data.gz",
+      frameworkUrl: "build/WeddingMarchBuildTest.framework.js.gz",
+      codeUrl: "build/WeddingMarchBuildTest.wasm.gz",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "DefaultCompany",
       productName: "SuperWedding",
