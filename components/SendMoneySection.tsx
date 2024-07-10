@@ -3,7 +3,17 @@ import { cn } from "@/lib/cn";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
-export default function SendMoneySection() {
+export interface SendMoneySectionProps {
+  accounts: {
+    prefix: string;
+    bankName: string;
+    accountNumber: string;
+    name: string;
+    color: string;
+  }[];
+}
+
+export default function SendMoneySection({ accounts }: SendMoneySectionProps) {
   const [showAccount, setShowAccount] = useState(false);
 
   const copyAccountText = ({
@@ -31,37 +41,23 @@ export default function SendMoneySection() {
         축하의 마음을 담아 축의금을 전달해보세요
       </div>
 
-      {/* 신랑측 마음 - 계좌번호 보기 (버튼) 핑크 */}
-      <TinySendMoneyItem
-        className="bg-[#4ec0ef]"
-        prefix="신랑"
-        showAccount={showAccount}
-        bankName="국민은행"
-        accountNumber="1234-5678-9012-3456"
-        name="박성준"
-        onClick={() => {
-          copyAccountText({
-            text: `국민은행 1234-5678-9012-3456 박성준`,
-            prefix: "신랑",
-          });
-        }}
-      />
-
-      {/* 신부측 마음 - 계좌번호 보기 (버튼) */}
-      <TinySendMoneyItem
-        className="bg-[#f9a8d4]"
-        prefix="신부"
-        showAccount={showAccount}
-        bankName="우리은행"
-        accountNumber="1234-5678-9012-3456"
-        name="최지은"
-        onClick={() => {
-          copyAccountText({
-            text: `우리은행 1234-5678-9012-3456 최지은`,
-            prefix: "신부",
-          });
-        }}
-      />
+      {accounts.map((account, index) => (
+        <TinySendMoneyItem
+          key={index}
+          className={`bg-[${account.color}]`}
+          prefix={account.prefix}
+          showAccount={showAccount}
+          bankName={account.bankName}
+          accountNumber={account.accountNumber}
+          name={account.name}
+          onClick={() => {
+            copyAccountText({
+              text: `${account.bankName} ${account.accountNumber} ${account.name}`,
+              prefix: account.prefix,
+            });
+          }}
+        />
+      ))}
     </section>
   );
 }
