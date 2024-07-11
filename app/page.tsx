@@ -12,6 +12,7 @@ import { forceUtc, utcMsOfKorea } from "@/lib/time";
 import LocationSection from "@/components/LocationSection";
 import GameButtonSection from "@/components/GameButtonSection";
 import SendMoneySection from "@/components/SendMoneySection";
+import CommentSection from "@/components/CommentSection";
 
 const CalendarSection = dynamic(() => import("@/components/CalendarSection"), {
   ssr: false,
@@ -147,7 +148,24 @@ export default function Home() {
         </MovieSection>
         */}
 
-        <SendMoneySection />
+        <SendMoneySection
+          accounts={[
+            {
+              prefix: "신랑",
+              bankName: "카카오뱅크",
+              accountNumber: "3333-10-4286822",
+              name: "박성준",
+              color: "#4ec0ef",
+            },
+            // {
+            //   prefix: "신부",
+            //   bankName: "우리은행",
+            //   accountNumber: "1234-5678-9012-3456",
+            //   name: "최지은",
+            //   color: "#f9a8d4",
+            // },
+          ]}
+        />
 
         <LocationSection
           locationTitle="상록아트홀 로비층 그랜드볼륨홀"
@@ -159,6 +177,8 @@ export default function Home() {
           naverMapUrl="https://naver.me/FHYuAgm6"
           kakaoNaviUrl="https://place.map.kakao.com/2009675378"
         />
+
+        <CommentSection />
       </div>
     </main>
   );
