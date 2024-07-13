@@ -43,10 +43,10 @@ export default function LocationSection({
             {locationTitle}
           </p>
           <p aria-label={locationAddress}>{locationAddress}</p>
-          <p aria-label={`Tel. ${locationTel}`}>Tel. {locationTel}</p>
+          {/*<p aria-label={`Tel. ${locationTel}`}>Tel. {locationTel}</p>*/}
         </div>
         <div>
-          <Link href={`tel:${locationTel}`}>
+         {/* <Link href={`tel:${locationTel}`}>
             <button
               type="button"
               className="flex justify-center items-center gap-2 w-36 h-36 bg-[#6EBD52] rounded-full shadow-lg"
@@ -60,7 +60,7 @@ export default function LocationSection({
                 aria-label="예식장에 전화하기"
               />
             </button>
-          </Link>
+          </Link>*/}
         </div>
       </div>
 

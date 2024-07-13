@@ -38,7 +38,7 @@ export default function SendMoneySection({ accounts }: SendMoneySectionProps) {
 
       {/* 축하의 마음을 담아 축의금을 전달해보세요 */}
       <div className="text-balance break-keep text-4xl leading-[4rem] !my-12">
-        축하의 마음을 담아 축의금을 전달해보세요
+        마음 전달하는 곳
       </div>
 
       {accounts.map((account, index) => (
