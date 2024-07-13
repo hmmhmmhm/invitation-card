@@ -98,11 +98,11 @@ export default function Home() {
 
                 <GallerySection
                     images={[
-                        { src: "/wedding/lsh-0050.webp" },
-                        { src: "/wedding/lsh-0239.webp" },
-                        { src: "/wedding/lsh-0844.webp" },
-                        { src: "/wedding/lsh-1056.webp" },
-                        { src: "/wedding/lsh-1102.webp" },
+                        { src: "/wedding/lsh-0050.webp", alt: "" },
+                        { src: "/wedding/lsh-0239.webp", alt: "" },
+                        { src: "/wedding/lsh-0844.webp", alt: "" },
+                        { src: "/wedding/lsh-1056.webp", alt: "" },
+                        { src: "/wedding/lsh-1102.webp", alt: "" },
                     ]}
                 />
 
