@@ -44,7 +44,6 @@ export default function SendMoneySection({ accounts }: SendMoneySectionProps) {
       {accounts.map((account, index) => (
         <TinySendMoneyItem
           key={index}
-          className={`bg-[${account.color}]`}
           prefix={account.prefix}
           showAccount={showAccount}
           bankName={account.bankName}
@@ -55,6 +54,9 @@ export default function SendMoneySection({ accounts }: SendMoneySectionProps) {
               text: `${account.bankName} ${account.accountNumber} ${account.name}`,
               prefix: account.prefix,
             });
+          }}
+          style={{
+            backgroundColor: account.color,
           }}
         />
       ))}
@@ -71,6 +73,7 @@ export const TinySendMoneyItem = ({
   accountNumber,
   name,
   className,
+  style,
 }: {
   prefix: string;
   showAccount: boolean;
@@ -80,19 +83,21 @@ export const TinySendMoneyItem = ({
   accountNumber: string;
   name: string;
   className?: string;
+  style?: React.CSSProperties;
 }) => {
   return (
-    <div className="flex flex-row gap-8 items-center">
+    <div className="flex flex-row gap-8 items-center w-full px-12 justify-between">
       <span className="text-5xl mr-4 shrink-0" aria-hidden>
         {prefix}측 마음
       </span>
       <button
         onClick={onClick}
+        aria-label={`${prefix}측 계좌번호`}
         className={cn(
-          "w-full h-full py-4 px-12 rounded-lg text-white font-bold animate-pulse shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl flex items-center justify-center relative gap-2 text-4xl",
+          "w-[40rem] h-full py-4 px-12 rounded-lg text-white font-bold animate-pulse shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl flex items-center justify-center relative gap-2 text-4xl",
           className
         )}
-        aria-label={`${prefix}측 계좌번호`}
+        style={style}
       >
         {!showAccount && (
           <div className="transform w-12 h-12 rounded-full animate-bounce flex items-center justify-center">

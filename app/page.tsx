@@ -9,7 +9,7 @@ import { useSakuraEffect } from "@/lib/hook/use-sakura-effect";
 import dynamic from "next/dynamic";
 import { forceUtc, utcMsOfKorea } from "@/lib/time";
 // import MovieSection from "@/components/MovieSection";
-import LocationSection from "@/components/LocationSection";
+// import LocationSection from "@/components/LocationSection";
 import GameButtonSection from "@/components/GameButtonSection";
 import SendMoneySection from "@/components/SendMoneySection";
 import CommentSection from "@/components/CommentSection";
@@ -35,7 +35,7 @@ export default function Home() {
     <main
       className={cn(
         "flex flex-col items-center w-full min-h-screen pt-48 select-none",
-        "bg-gradient-to-br from-[#fff5e5] via-[#fde2e4] to-[#e2ece9]"
+        "bg-gradient-to-br from-[#fff5e5] via-[#fde2e4] to-[#e2ece9] pb-40"
       )}
       aria-label="박성준 최지은 결혼식 청첩장"
     >
@@ -111,8 +111,8 @@ export default function Home() {
           ]}
         />
 
-        {/* {
-        <MovieSection description="두 사람의 아름다운 시작을 함께 해주세요.">
+        {/*
+        {<MovieSection description="두 사람의 아름다운 시작을 함께 해주세요.">
           <iframe
             src="https://www.youtube.com/embed/mb2j87IDeTI"
             title="4년 공개연애 끝, 행복했던 우리의 결혼식"
@@ -122,50 +122,54 @@ export default function Home() {
             className="border-none w-full min-h-[40rem]"
           />
         </MovieSection>
-        }*/}
+        }
+        */}
 
-        {/*<ContactSection
-                  primaryContacts={[
-                      {
-                          title: "신랑",
-                          phoneNumber: "010-1234-5678",
-                          highlightColor: "#4ec0ef",
-                      },
-                      {
-                          title: "신부",
-                          phoneNumber: "010-8765-4321",
-                          highlightColor: "#F9A8D4",
-                      },
-                  ]}
-                  leftFamilyContacts={[
-                      {
-                          title: "아버지",
-                          name: "박성준",
-                          phoneNumber: "010-1234-5678",
-                          highlightColor: "#4ec0ef",
-                      },
-                      {
-                          title: "어머니",
-                          name: "최지은",
-                          phoneNumber: "010-1234-5678",
-                          highlightColor: "#4ec0ef",
-                      },
-                  ]}
-                  rightFamilyContacts={[
-                      {
-                          title: "아버지",
-                          name: "박성준",
-                          phoneNumber: "010-1234-5678",
-                          highlightColor: "#F9A8D4",
-                      },
-                      {
-                          title: "어머니",
-                          name: "최지은",
-                          phoneNumber: "010-1234-5678",
-                          highlightColor: "#F9A8D4",
-                      },
-                  ]}
-              />*/}
+        {/*
+        <ContactSection
+          primaryContacts={[
+            {
+              title: "신랑",
+              phoneNumber: "010-1234-5678",
+              highlightColor: "#4ec0ef",
+            },
+            {
+              title: "신부",
+              phoneNumber: "010-8765-4321",
+              highlightColor: "#F9A8D4",
+            },
+          ]}
+          leftFamilyContacts={[
+            {
+              title: "아버지",
+              name: "박성준",
+              phoneNumber: "010-1234-5678",
+              highlightColor: "#4ec0ef",
+            },
+            {
+              title: "어머니",
+              name: "최지은",
+              phoneNumber: "010-1234-5678",
+              highlightColor: "#4ec0ef",
+            },
+          ]}
+          rightFamilyContacts={[
+            {
+              title: "아버지",
+              name: "박성준",
+              phoneNumber: "010-1234-5678",
+              highlightColor: "#F9A8D4",
+            },
+            {
+              title: "어머니",
+              name: "최지은",
+              phoneNumber: "010-1234-5678",
+              highlightColor: "#F9A8D4",
+            },
+          ]}
+        />
+        */}
+
         <CommentSection />
         <SendMoneySection
           accounts={[
@@ -195,7 +199,7 @@ export default function Home() {
               bankName: "카카오뱅크",
               accountNumber: "3333-10-4286822",
               name: "박성준",
-              color: "#4ec0ef",
+              color: "#f9a8d4",
             },
           ]}
         />
