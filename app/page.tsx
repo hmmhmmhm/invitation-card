@@ -13,6 +13,7 @@ import { forceUtc, utcMsOfKorea } from "@/lib/time";
 import GameButtonSection from "@/components/GameButtonSection";
 import SendMoneySection from "@/components/SendMoneySection";
 import CommentSection from "@/components/CommentSection";
+import { useSearchParams } from "next/navigation";
 
 const CalendarSection = dynamic(() => import("@/components/CalendarSection"), {
   ssr: false,
@@ -22,6 +23,10 @@ const GallerySection = dynamic(() => import("@/components/GallerySection"), {
 });
 
 export default function Home() {
+  // ?nogaejwa 쿼리스트링 받기
+  const searchParams = useSearchParams();
+  const nogaejwa = searchParams.get("nogaejwa");
+
   // * 로컬 시간대를 무시하고 한국 시간대로 고정
   const eventDate = forceUtc({
     date: "2024-11-30T11:00:00+09:00",
@@ -171,38 +176,40 @@ export default function Home() {
         */}
 
         <CommentSection />
-        <SendMoneySection
-          accounts={[
-            {
-              prefix: "신랑",
-              bankName: "카카오뱅크",
-              accountNumber: "3333-10-4286822",
-              name: "박성준",
-              color: "#4ec0ef",
-            },
-            {
-              prefix: "신랑 혼주",
-              bankName: "카카오뱅크",
-              accountNumber: "3333-10-4286822",
-              name: "박성준",
-              color: "#4ec0ef",
-            },
-            {
-              prefix: "신부",
-              bankName: "우리은행",
-              accountNumber: "1234-5678-9012-3456",
-              name: "최지은",
-              color: "#f9a8d4",
-            },
-            {
-              prefix: "신부 혼주",
-              bankName: "카카오뱅크",
-              accountNumber: "3333-10-4286822",
-              name: "박성준",
-              color: "#f9a8d4",
-            },
-          ]}
-        />
+        {nogaejwa === null && (
+          <SendMoneySection
+            accounts={[
+              {
+                prefix: "신랑",
+                bankName: "카카오뱅크",
+                accountNumber: "3333-10-4286822",
+                name: "박성준",
+                color: "#B7D06E",
+              },
+              {
+                prefix: "신랑 혼주",
+                bankName: "카카오뱅크",
+                accountNumber: "3333-10-4286822",
+                name: "박성준",
+                color: "#B7D06E",
+              },
+              {
+                prefix: "신부",
+                bankName: "우리은행",
+                accountNumber: "1234-5678-9012-3456",
+                name: "최지은",
+                color: "#f9a8d4",
+              },
+              {
+                prefix: "신부 혼주",
+                bankName: "카카오뱅크",
+                accountNumber: "3333-10-4286822",
+                name: "박성준",
+                color: "#f9a8d4",
+              },
+            ]}
+          />
+        )}
       </div>
     </main>
   );
