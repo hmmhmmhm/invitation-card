@@ -1,6 +1,5 @@
 "use client";
 
-import ContactSection from "@/components/ContactSection";
 import IntroSection from "@/components/IntroSection";
 import InvitationSection from "@/components/InvitationSection";
 import WeddingPhotoSection from "@/components/WeddingPhotoSection";
@@ -8,12 +7,14 @@ import { cn } from "@/lib/cn";
 import { useSakuraEffect } from "@/lib/hook/use-sakura-effect";
 import dynamic from "next/dynamic";
 import { forceUtc, utcMsOfKorea } from "@/lib/time";
-// import MovieSection from "@/components/MovieSection";
-// import LocationSection from "@/components/LocationSection";
 import GameButtonSection from "@/components/GameButtonSection";
 import SendMoneySection from "@/components/SendMoneySection";
 import CommentSection from "@/components/CommentSection";
 import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
+// import ContactSection from "@/components/ContactSection";
+// import MovieSection from "@/components/MovieSection";
+// import LocationSection from "@/components/LocationSection";
 
 const CalendarSection = dynamic(() => import("@/components/CalendarSection"), {
   ssr: false,
@@ -24,6 +25,7 @@ const GallerySection = dynamic(() => import("@/components/GallerySection"), {
 
 export default function Home() {
   // ?nogaejwa 쿼리스트링 받기
+  const router = useRouter();
   const searchParams = useSearchParams();
   const nogaejwa = searchParams.get("nogaejwa");
 
@@ -176,6 +178,7 @@ export default function Home() {
         */}
 
         <CommentSection />
+
         {nogaejwa === null && (
           <SendMoneySection
             accounts={[

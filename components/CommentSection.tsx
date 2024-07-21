@@ -1,14 +1,19 @@
-// 방명록 댓글 섹션
-// - 방명록 댓글 작성
-// - 방명록 댓글 리스트 (5개 표시, 페이지네이션 표시)
-
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+
+// Spinner 컴포넌트
+const Spinner = () => (
+  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div className="w-16 h-16 border-4 border-t-4 border-t-transparent border-white rounded-full animate-spin"></div>
+  </div>
+);
 
 const apiKey = "v7wg34ng43y3893";
 
 export default function CommentSection() {
   const [listCount, setListCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const [list, setList] = useState<
     {
@@ -25,6 +30,7 @@ export default function CommentSection() {
   const perPage = 5;
 
   useEffect(() => {
+    setLoading(true);
     fetch("https://invitation-card-api.up.railway.app/v1/invitation/count", {
       method: "POST",
       headers: {
@@ -38,14 +44,17 @@ export default function CommentSection() {
 
       if (Number.isNaN(count)) {
         console.error("Invalid count");
+        setLoading(false);
         return;
       }
 
       setListCount(count);
+      setLoading(false);
     });
   }, [currentPage]);
 
   useEffect(() => {
+    setLoading(true);
     fetch("https://invitation-card-api.up.railway.app/v1/invitation/list", {
       method: "POST",
       headers: {
@@ -62,11 +71,13 @@ export default function CommentSection() {
 
       if (!Array.isArray(list)) {
         console.error("Invalid list");
+        setLoading(false);
         return;
       }
 
       console.log({ list });
       setList(list);
+      setLoading(false);
     });
   }, [currentPage]);
 
@@ -96,6 +107,7 @@ export default function CommentSection() {
       className="flex flex-col items-center w-full space-y-12 px-12 mb-24"
       aria-label="방명록 댓글 섹션"
     >
+      {loading && createPortal(<Spinner />, document.body)}
       <div className="flex flex-row gap-3 text-3xl text-[#4A3C35] border-[#D4BDA2] border-b-[1px] pb-3 uppercase tracking-[0.188rem]">
         <p aria-label="방명록 댓글">GUEST BOOK</p>
       </div>
