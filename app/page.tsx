@@ -106,18 +106,6 @@ export default function Home() {
           ]}
         />
 
-        <CalendarSection eventDate={eventDate} />
-
-        <GallerySection
-          images={[
-            { src: "/wedding/lsh-0050.webp", alt: "" },
-            { src: "/wedding/lsh-0239.webp", alt: "" },
-            { src: "/wedding/lsh-0844.webp", alt: "" },
-            { src: "/wedding/lsh-1056.webp", alt: "" },
-            { src: "/wedding/lsh-1102.webp", alt: "" },
-          ]}
-        />
-
         {/*
         {<MovieSection description="두 사람의 아름다운 시작을 함께 해주세요.">
           <iframe

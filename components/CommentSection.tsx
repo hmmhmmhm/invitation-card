@@ -14,6 +14,7 @@ export default function CommentSection() {
   const [listCount, setListCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [newest, setNewest] = useState(true); // 추가된 상태
 
   const [list, setList] = useState<
     {
@@ -64,7 +65,7 @@ export default function CommentSection() {
         apiKey,
         count: perPage - 1,
         offset: (currentPage - 1) * perPage,
-        newest: false,
+        newest,
       }),
     }).then(async (response) => {
       const list = await response.json();
@@ -75,11 +76,10 @@ export default function CommentSection() {
         return;
       }
 
-      console.log({ list });
-      setList(list);
+      setList(list.reverse());
       setLoading(false);
     });
-  }, [currentPage]);
+  }, [currentPage, newest]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -110,6 +110,26 @@ export default function CommentSection() {
       {loading && createPortal(<Spinner />, document.body)}
       <div className="flex flex-row gap-3 text-3xl text-[#4A3C35] border-[#D4BDA2] border-b-[1px] pb-3 uppercase tracking-[0.188rem]">
         <p aria-label="방명록 댓글">GUEST BOOK</p>
+      </div>
+
+      {/* 정렬 버튼 추가 */}
+      <div className="flex flex-row gap-4">
+        <button
+          className={`px-4 py-2 rounded-lg ${
+            newest ? "bg-[#F78DA7] text-white" : "bg-white text-[#F78DA7]"
+          }`}
+          onClick={() => setNewest(true)}
+        >
+          시간순 정렬
+        </button>
+        <button
+          className={`px-4 py-2 rounded-lg ${
+            !newest ? "bg-[#F78DA7] text-white" : "bg-white text-[#F78DA7]"
+          }`}
+          onClick={() => setNewest(false)}
+        >
+          점수순 정렬
+        </button>
       </div>
 
       {/* 방명록 댓글 작성 */}
