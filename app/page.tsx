@@ -59,10 +59,13 @@ export default function Home() {
                 <InvitationSection
                     invitation={
                         <>
-                            서로가 마주보며 다져온 사랑을 이제 함께 한 곳을 바라보며 걸어갈 수
-                            있는 큰 사랑으로 키우고자 합니다.
-                            <br aria-hidden /> 저희 두 사람이 사랑의 이름으로 지켜나갈 수
-                            있도록 앞날을 축복해 주시면 감사하겠습니다.
+                            서로의 꿈을 응원해 온 두 사람이<br />
+                            이제 하나의 길을 함께 걸어가려 합니다.<br />
+                            <br />
+                            앞으로의 모든 날들을 더 아름답게 만들어가고, <br />
+                            서로에게 힘이 되는 든든한 반려자가 되겠습니다. <br />
+                            새롭게 시작하는 이 소중한 자리에서 <br />
+                            함께 축복해 주시기를 바랍니다. <br />
                         </>
                     }
                     familyNames={
@@ -72,9 +75,9 @@ export default function Home() {
                                     박원식 · 황순용<span className="text-3xl">의 차남</span> 성준
                                 </span>
                             </p>
-                            <p aria-label="최병욱 손원미의 차녀 지은">
+                            <p aria-label="최병옥 손원미의 차녀 지은">
                                 <span aria-hidden>
-                                    최병욱 · 손원미<span className="text-3xl">의 차녀</span> 지은
+                                    최병옥 · 손원미<span className="text-3xl">의 차녀</span> 지은
                                 </span>
                             </p>
                         </>
@@ -83,7 +86,6 @@ export default function Home() {
                 />
 
 
-                <CalendarSection eventDate={eventDate} />
 
                 <LocationSection
                     locationTitle="상록아트홀 L층 그랜드볼륨홀"
@@ -95,6 +97,8 @@ export default function Home() {
                     naverMapUrl="https://naver.me/FHYuAgm6"
                     kakaoNaviUrl="https://place.map.kakao.com/2009675378"
                 />
+
+                <CalendarSection eventDate={eventDate} />
 
                 <GallerySection
                     images={[
@@ -175,13 +179,27 @@ export default function Home() {
                             name: "박성준",
                             color: "#4ec0ef",
                         },
-                        // {
-                        //   prefix: "신부",
-                        //   bankName: "우리은행",
-                        //   accountNumber: "1234-5678-9012-3456",
-                        //   name: "최지은",
-                        //   color: "#f9a8d4",
-                        // },
+                        {
+                            prefix: "신랑 혼주",
+                            bankName: "카카오뱅크",
+                            accountNumber: "3333-10-4286822",
+                            name: "박성준",
+                            color: "#4ec0ef",
+                        },
+                        {
+                           prefix: "신부",
+                           bankName: "우리은행",
+                           accountNumber: "1234-5678-9012-3456",
+                           name: "최지은",
+                           color: "#f9a8d4",
+                        },
+                        {
+                            prefix: "신부 혼주",
+                            bankName: "카카오뱅크",
+                            accountNumber: "3333-10-4286822",
+                            name: "박성준",
+                            color: "#4ec0ef",
+                        },
                     ]}
                 />
             </div>
