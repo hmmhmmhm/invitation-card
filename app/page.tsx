@@ -15,6 +15,7 @@ import { useRouter } from "next/navigation";
 // import ContactSection from "@/components/ContactSection";
 // import MovieSection from "@/components/MovieSection";
 import LocationSection from "@/components/LocationSection";
+import Link from "next/link";
 
 const CalendarSection = dynamic(() => import("@/components/CalendarSection"), {
   ssr: false,
@@ -129,6 +130,20 @@ export default function Home() {
           }}
         />
 
+        <div className="flex w-full justify-center -mt-32 mb-40">
+          <Link
+            href="/hotel-direction.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button
+              className="px-6 py-3 bg-[#F78DA7] text-white text-2xl rounded-lg"
+              aria-label="예식장 약도 보기 PDF"
+            >
+              예식장 약도 보기 PDF
+            </button>
+          </Link>
+        </div>
         {/*
         {<MovieSection description="두 사람의 아름다운 시작을 함께 해주세요.">
           <iframe

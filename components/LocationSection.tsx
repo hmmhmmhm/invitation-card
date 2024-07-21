@@ -1,5 +1,4 @@
 import { cn } from "@/lib/cn";
-import { IconPhoneCall } from "@tabler/icons-react";
 import Link from "next/link";
 
 export interface LocationSectionProps {
@@ -11,14 +10,14 @@ export interface LocationSectionProps {
   kakaoNaviUrl?: string;
   naverMapUrl: string;
   kakaoMapUrl?: string;
-  transportationInfo: {
-    address: string;
-    phone: string;
-    subway: string;
-    shuttleBus: string;
-    bus: string[];
-    car: string;
-    parking: string;
+  transportationInfo?: {
+    address?: string;
+    phone?: string;
+    subway?: string;
+    shuttleBus?: string;
+    bus?: string[];
+    car?: string;
+    parking?: string;
   };
 }
 
@@ -159,56 +158,81 @@ export default function LocationSection({
         <div className="text-left text-2xl">
           <table className="w-full text-left border-collapse">
             <tbody>
-              <tr>
-                <td className="font-semibold py-2">주소</td>
-                <td className="py-2">{transportationInfo.address}</td>
-              </tr>
-              <tr>
-                <td className="font-semibold py-2">전화</td>
-                <td className="py-2">{transportationInfo.phone}</td>
-              </tr>
-              <tr>
-                <td colSpan={2} className="font-semibold text-3xl py-4">
-                  지하철 및 셔틀버스 이용시
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2">2호선, 수인분당선</td>
-                <td className="py-2">{transportationInfo.subway}</td>
-              </tr>
-              <tr>
-                <td className="py-2">셔틀버스</td>
-                <td className="py-2">{transportationInfo.shuttleBus}</td>
-              </tr>
-              <tr>
-                <td colSpan={2} className="font-semibold text-3xl py-4">
-                  일반 버스 이용시
-                </td>
-              </tr>
-              {transportationInfo.bus.map((busInfo, index) => (
-                <tr key={index}>
-                  <td className="py-2">{busInfo.split(":")[0]}</td>
-                  <td className="py-2">{busInfo.split(":")[1]}</td>
+              {transportationInfo?.address && (
+                <tr>
+                  <td className="font-semibold py-2">주소</td>
+                  <td className="py-2">{transportationInfo.address}</td>
                 </tr>
-              ))}
-              <tr>
-                <td colSpan={2} className="font-semibold text-3xl py-4">
-                  자동차 이용시
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2">네비게이션</td>
-                <td className="py-2">{transportationInfo.car}</td>
-              </tr>
-              <tr>
-                <td colSpan={2} className="font-semibold text-3xl py-4">
-                  주차안내
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2">주차 가능</td>
-                <td className="py-2">{transportationInfo.parking}</td>
-              </tr>
+              )}
+              {transportationInfo?.phone && (
+                <tr>
+                  <td className="font-semibold py-2">전화</td>
+                  <td className="py-2">{transportationInfo.phone}</td>
+                </tr>
+              )}
+              {(transportationInfo?.subway ||
+                transportationInfo?.shuttleBus) && (
+                <>
+                  <tr>
+                    <td colSpan={2} className="font-semibold text-3xl py-4">
+                      지하철 및 셔틀버스 이용시
+                    </td>
+                  </tr>
+                  {transportationInfo?.subway && (
+                    <tr>
+                      <td className="py-2">2호선, 수인분당선</td>
+                      <td className="py-2">{transportationInfo.subway}</td>
+                    </tr>
+                  )}
+                  {transportationInfo?.shuttleBus && (
+                    <tr>
+                      <td className="py-2">셔틀버스</td>
+                      <td className="py-2">{transportationInfo.shuttleBus}</td>
+                    </tr>
+                  )}
+                </>
+              )}
+              {transportationInfo?.bus && transportationInfo.bus.length > 0 && (
+                <>
+                  <tr>
+                    <td colSpan={2} className="font-semibold text-3xl py-4">
+                      일반 버스 이용시
+                    </td>
+                  </tr>
+                  {transportationInfo.bus.map((busInfo, index) => (
+                    <tr key={index}>
+                      <td className="py-2">{busInfo.split(":")[0]}</td>
+                      <td className="py-2">{busInfo.split(":")[1]}</td>
+                    </tr>
+                  ))}
+                </>
+              )}
+              {transportationInfo?.car && (
+                <>
+                  <tr>
+                    <td colSpan={2} className="font-semibold text-3xl py-4">
+                      자동차 이용시
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-2">네비게이션</td>
+                    <td className="py-2">{transportationInfo.car}</td>
+                  </tr>
+                </>
+              )}
+              {transportationInfo?.parking && (
+                <>
+                  <tr>
+                    <td colSpan={2} className="font-semibold text-3xl py-4">
+                      주차안내
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-2">주차 가능</td>
+                    <td className="py-2">{transportationInfo.parking}</td>
+                  </tr>
+                </>
+              )}
             </tbody>
           </table>
         </div>
