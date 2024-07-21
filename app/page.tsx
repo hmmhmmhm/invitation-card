@@ -11,7 +11,6 @@ import GameButtonSection from "@/components/GameButtonSection";
 import SendMoneySection from "@/components/SendMoneySection";
 import CommentSection from "@/components/CommentSection";
 import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
 // import ContactSection from "@/components/ContactSection";
 // import MovieSection from "@/components/MovieSection";
 import LocationSection from "@/components/LocationSection";
@@ -25,8 +24,6 @@ const GallerySection = dynamic(() => import("@/components/GallerySection"), {
 });
 
 export default function Home() {
-  // ?nogaejwa 쿼리스트링 받기
-  const router = useRouter();
   const searchParams = useSearchParams();
   const nogaejwa = searchParams.get("nogaejwa");
 
@@ -144,6 +141,7 @@ export default function Home() {
             </button>
           </Link>
         </div>
+
         {/*
         {<MovieSection description="두 사람의 아름다운 시작을 함께 해주세요.">
           <iframe
