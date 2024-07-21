@@ -19,7 +19,7 @@ declare global {
   }
 }
 
-const UnityWebGLPlayer: React.FC = () => {
+const UnityWebGLPlayer = () => {
   useEffect(() => {
     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
       const meta = document.createElement("meta");
