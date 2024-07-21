@@ -11,6 +11,15 @@ export interface LocationSectionProps {
   kakaoNaviUrl?: string;
   naverMapUrl: string;
   kakaoMapUrl?: string;
+  transportationInfo: {
+    address: string;
+    phone: string;
+    subway: string;
+    shuttleBus: string;
+    bus: string[];
+    car: string;
+    parking: string;
+  };
 }
 
 export default function LocationSection({
@@ -22,6 +31,7 @@ export default function LocationSection({
   kakaoNaviUrl,
   naverMapUrl,
   kakaoMapUrl,
+  transportationInfo,
 }: LocationSectionProps) {
   return (
     <section
@@ -34,7 +44,7 @@ export default function LocationSection({
         <p aria-hidden>Location</p>
       </div>
 
-      <div className="flex flex-row w-full justify-between items-center p-12 bg-[#FBE2E4] text-[#665743]">
+      <div className="flex flex-row w-full justify-between items-center p-12 text-[#665743]">
         <div className="flex flex-col text-[2.5rem] text-left">
           <p
             className="mb-4 text-5xl text-balance font-bold"
@@ -46,7 +56,7 @@ export default function LocationSection({
           {/*<p aria-label={`Tel. ${locationTel}`}>Tel. {locationTel}</p>*/}
         </div>
         <div>
-         {/* <Link href={`tel:${locationTel}`}>
+          {/* <Link href={`tel:${locationTel}`}>
             <button
               type="button"
               className="flex justify-center items-center gap-2 w-36 h-36 bg-[#6EBD52] rounded-full shadow-lg"
@@ -73,7 +83,7 @@ export default function LocationSection({
       </Link>
 
       <div
-        className="flex flex-row w-full justify-between items-center p-12 bg-[#FBE2E4] text-[#665743] text-4xl font-bold"
+        className="flex flex-row w-full justify-between items-center p-12 text-[#665743] text-4xl font-bold"
         aria-label="길찾기 앱으로 길찾기"
       >
         {tmapUrl && (
@@ -140,6 +150,68 @@ export default function LocationSection({
             </button>
           </Link>
         )}
+      </div>
+
+      <div className="flex flex-row gap-3 text-3xl text-[#4A3C35] border-[#D4BDA2] border-b-[1px] pb-3 uppercase tracking-[0.188rem] mb-16 justify-center mt-24">
+        <p aria-hidden>Transportation</p>
+      </div>
+      <div className="flex flex-col w-full p-6 bg-[#FBE2E4] text-[#665743]">
+        <div className="text-left text-2xl">
+          <table className="w-full text-left border-collapse">
+            <tbody>
+              <tr>
+                <td className="font-semibold py-2">주소</td>
+                <td className="py-2">{transportationInfo.address}</td>
+              </tr>
+              <tr>
+                <td className="font-semibold py-2">전화</td>
+                <td className="py-2">{transportationInfo.phone}</td>
+              </tr>
+              <tr>
+                <td colSpan={2} className="font-semibold text-3xl py-4">
+                  지하철 및 셔틀버스 이용시
+                </td>
+              </tr>
+              <tr>
+                <td className="py-2">2호선, 수인분당선</td>
+                <td className="py-2">{transportationInfo.subway}</td>
+              </tr>
+              <tr>
+                <td className="py-2">셔틀버스</td>
+                <td className="py-2">{transportationInfo.shuttleBus}</td>
+              </tr>
+              <tr>
+                <td colSpan={2} className="font-semibold text-3xl py-4">
+                  일반 버스 이용시
+                </td>
+              </tr>
+              {transportationInfo.bus.map((busInfo, index) => (
+                <tr key={index}>
+                  <td className="py-2">{busInfo.split(":")[0]}</td>
+                  <td className="py-2">{busInfo.split(":")[1]}</td>
+                </tr>
+              ))}
+              <tr>
+                <td colSpan={2} className="font-semibold text-3xl py-4">
+                  자동차 이용시
+                </td>
+              </tr>
+              <tr>
+                <td className="py-2">네비게이션</td>
+                <td className="py-2">{transportationInfo.car}</td>
+              </tr>
+              <tr>
+                <td colSpan={2} className="font-semibold text-3xl py-4">
+                  주차안내
+                </td>
+              </tr>
+              <tr>
+                <td className="py-2">주차 가능</td>
+                <td className="py-2">{transportationInfo.parking}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
   );

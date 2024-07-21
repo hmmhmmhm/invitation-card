@@ -14,7 +14,7 @@ import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 // import ContactSection from "@/components/ContactSection";
 // import MovieSection from "@/components/MovieSection";
-// import LocationSection from "@/components/LocationSection";
+import LocationSection from "@/components/LocationSection";
 
 const CalendarSection = dynamic(() => import("@/components/CalendarSection"), {
   ssr: false,
@@ -104,6 +104,29 @@ export default function Home() {
             { src: "/wedding/lsh-1056.webp", alt: "" },
             { src: "/wedding/lsh-1102.webp", alt: "" },
           ]}
+        />
+
+        <LocationSection
+          locationTitle="상록아트홀 L층 그랜드볼륨홀"
+          locationAddress="서울 강남구 언주로 508"
+          locationTel="02-564-5757"
+          mapImageUrl="/map.webp"
+          tmapUrl="https://tmap.life/bae81b37"
+          kakaoMapUrl="https://place.map.kakao.com/2009675378"
+          naverMapUrl="https://naver.me/FHYuAgm6"
+          kakaoNaviUrl="https://place.map.kakao.com/2009675378"
+          transportationInfo={{
+            address: "서울특별시 강남구 언주로 508 (역삼동 701번지)",
+            phone: "02-564-5757",
+            subway: "“선릉역” 5번 출구 도보 5분",
+            shuttleBus: "선릉역 5번 출구에서 운행",
+            bus: [
+              "KT 강남지사 하차: 141(도봉산), 242(중랑, 신내역), 361(여의도)",
+              "한국기술센터, 상록회관 하차: 146(상계동), 341(하남), 360(송파), 740(덕은동)",
+            ],
+            car: "“서울상록회관” 또는 “서울시 강남구 언주로 508” 입력",
+            parking: "동시 950대 주차 가능",
+          }}
         />
 
         {/*

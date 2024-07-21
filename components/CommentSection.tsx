@@ -113,14 +113,14 @@ export default function CommentSection() {
       </div>
 
       {/* 정렬 버튼 추가 */}
-      <div className="flex flex-row gap-4">
+      <div className="flex flex-row gap-4 text-3xl">
         <button
           className={`px-4 py-2 rounded-lg ${
             newest ? "bg-[#F78DA7] text-white" : "bg-white text-[#F78DA7]"
           }`}
           onClick={() => setNewest(true)}
         >
-          시간순 정렬
+          최신순 정렬
         </button>
         <button
           className={`px-4 py-2 rounded-lg ${
