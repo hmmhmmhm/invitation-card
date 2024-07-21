@@ -19,7 +19,7 @@ export default function InvitationSection({
       <div className="flex flex-row gap-3 text-3xl text-[#4A3C35] border-[#D4BDA2] border-b-[1px] pb-3 uppercase tracking-[0.188rem]">
         <p aria-label="초대 내용">Invitation</p>
       </div>
-      <div className="text-balance break-keep max-w-[30rem] text-4xl leading-[4rem]">
+      <div className="max-w-[60rem] text-4xl leading-[4rem]">
         {invitation}
       </div>
 
