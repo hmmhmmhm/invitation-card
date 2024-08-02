@@ -54,7 +54,7 @@ export default function GallerySection({ images }: GallerySectionProps) {
         const handleTouchEnd = (e: TouchEvent) => {
             if ((e.target as HTMLElement).tagName === "IMG") {
                 const touchDuration = new Date().getTime() - touchStartTime.current;
-                if (touchDuration > 500) { // 터치 시간이 500ms 이상이면 꾹 누른 것으로 간주
+                if (touchDuration > 200) { // 터치 시간이 500ms 이상이면 꾹 누른 것으로 간주
                     e.preventDefault();
                 }
             }
