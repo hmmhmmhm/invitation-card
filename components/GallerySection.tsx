@@ -80,7 +80,7 @@ export default function GallerySection({ images }: GallerySectionProps) {
                     {images.map((image, index) => (
                         <a key={index} href={image.src} className="gallery__item relative">
                             <img alt={image.alt} src={image.src} />
-                            <div className="absolute inset-0 bg-transparent" style={{ pointerEvents: 'none' }}></div>
+                            <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0)', pointerEvents: 'none' }}></div>
                         </a>
                     ))}
                 </LightGallery>
