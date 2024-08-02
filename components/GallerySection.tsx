@@ -6,7 +6,7 @@ import "./GallerySection.css";
 
 import lgThumbnail from "lightgallery/plugins/thumbnail";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 export interface GallerySectionProps {
     images: {
@@ -17,6 +17,7 @@ export interface GallerySectionProps {
 
 export default function GallerySection({ images }: GallerySectionProps) {
     const [overlayActive, setOverlayActive] = useState(false);
+    const touchStartTime = useRef(0);
 
     useEffect(() => {
         const handleContextMenu = (e: MouseEvent) => {
@@ -46,7 +47,16 @@ export default function GallerySection({ images }: GallerySectionProps) {
 
         const handleTouchStart = (e: TouchEvent) => {
             if ((e.target as HTMLElement).tagName === "IMG") {
-                e.preventDefault();
+                touchStartTime.current = new Date().getTime();
+            }
+        };
+
+        const handleTouchEnd = (e: TouchEvent) => {
+            if ((e.target as HTMLElement).tagName === "IMG") {
+                const touchDuration = new Date().getTime() - touchStartTime.current;
+                if (touchDuration > 500) { // 터치 시간이 500ms 이상이면 꾹 누른 것으로 간주
+                    e.preventDefault();
+                }
             }
         };
 
@@ -54,12 +64,14 @@ export default function GallerySection({ images }: GallerySectionProps) {
         document.addEventListener("keydown", handleKeyDown);
         document.addEventListener("visibilitychange", handleVisibilityChange);
         document.addEventListener("touchstart", handleTouchStart, { passive: false });
+        document.addEventListener("touchend", handleTouchEnd, { passive: false });
 
         return () => {
             document.removeEventListener("contextmenu", handleContextMenu);
             document.removeEventListener("keydown", handleKeyDown);
             document.removeEventListener("visibilitychange", handleVisibilityChange);
             document.removeEventListener("touchstart", handleTouchStart);
+            document.removeEventListener("touchend", handleTouchEnd);
         };
     }, []);
 
