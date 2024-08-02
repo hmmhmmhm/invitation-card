@@ -5,7 +5,6 @@ import "lightgallery/css/lg-thumbnail.css";
 import "./GallerySection.css";
 
 import lgThumbnail from "lightgallery/plugins/thumbnail";
-import lgZoom from "lightgallery/plugins/zoom";
 
 import React, { useEffect, useState } from "react";
 
@@ -45,22 +44,28 @@ export default function GallerySection({ images }: GallerySectionProps) {
             }
         };
 
+        const handleTouchStart = (e: TouchEvent) => {
+            if ((e.target as HTMLElement).tagName === "IMG") {
+                e.preventDefault();
+            }
+        };
+
         document.addEventListener("contextmenu", handleContextMenu);
         document.addEventListener("keydown", handleKeyDown);
         document.addEventListener("visibilitychange", handleVisibilityChange);
+        document.addEventListener("touchstart", handleTouchStart, { passive: false });
 
         return () => {
             document.removeEventListener("contextmenu", handleContextMenu);
             document.removeEventListener("keydown", handleKeyDown);
             document.removeEventListener("visibilitychange", handleVisibilityChange);
+            document.removeEventListener("touchstart", handleTouchStart);
         };
     }, []);
 
     return (
         <>
-            <div className={`overlay ${overlayActive ? "active" : ""}`}>
-                
-            </div>
+            <div className={`overlay ${overlayActive ? "active" : ""}`}></div>
             <section
                 className={`flex justify-center items-center w-full flex-col font-bold text-5xl text-center color-[#483A33] mb-[5rem] mt-24 no-select ${overlayActive ? "blur-content" : ""}`}
                 aria-label="결혼식 사진첩"
