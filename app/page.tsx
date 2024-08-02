@@ -92,20 +92,8 @@ export default function Home() {
           sectionBackgroundImage="/wedding/lsh-0239.webp"
         />
 
-        <CalendarSection eventDate={eventDate} />
-
-        <GallerySection
-          images={[
-            { src: "/wedding/lsh-0050.webp", alt: "" },
-            { src: "/wedding/lsh-0239.webp", alt: "" },
-            { src: "/wedding/lsh-0844.webp", alt: "" },
-            { src: "/wedding/lsh-1056.webp", alt: "" },
-            { src: "/wedding/lsh-1102.webp", alt: "" },
-          ]}
-        />
-
         <LocationSection
-          locationTitle="상록아트홀 L층 그랜드볼륨홀"
+          locationTitle="상록아트홀 L층 그랜드볼룸"
           locationAddress="서울 강남구 언주로 508"
           locationTel="02-564-5757"
           mapImageUrl="/map.webp"
@@ -125,9 +113,21 @@ export default function Home() {
             car: "“서울상록회관” 또는 “서울시 강남구 언주로 508” 입력",
             parking: "동시 950대 주차 가능",
           }}
-        />
+              />
 
-        <div className="flex w-full justify-center -mt-32 mb-40">
+        <CalendarSection eventDate={eventDate} />
+
+              <GallerySection
+                  images={[
+                      { src: "/wedding/lsh-0239.webp", alt: "" },
+                      { src: "/wedding/lsh-0050.webp", alt: "" },
+                      { src: "/wedding/lsh-0844.webp", alt: "" },
+                      { src: "/wedding/lsh-1056.webp", alt: "" },
+                      { src: "/wedding/lsh-1102.webp", alt: "" },
+                  ]}
+              />
+
+        {/*<div className="flex w-full justify-center -mt-32 mb-40">
           <Link
             href="/hotel-direction.pdf"
             target="_blank"
@@ -140,7 +140,7 @@ export default function Home() {
               예식장 약도 보기 PDF
             </button>
           </Link>
-        </div>
+        </div>*/}
 
         {/*
         {<MovieSection description="두 사람의 아름다운 시작을 함께 해주세요.">
@@ -214,7 +214,7 @@ export default function Home() {
                 color: "#B7D06E",
               },
               {
-                prefix: "신랑 혼주",
+                prefix: "신랑측",
                 bankName: "카카오뱅크",
                 accountNumber: "3333-10-4286822",
                 name: "박성준",
@@ -228,7 +228,7 @@ export default function Home() {
                 color: "#f9a8d4",
               },
               {
-                prefix: "신부 혼주",
+                prefix: "신부측",
                 bankName: "카카오뱅크",
                 accountNumber: "3333-10-4286822",
                 name: "박성준",

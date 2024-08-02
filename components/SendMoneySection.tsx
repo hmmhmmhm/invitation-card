@@ -14,19 +14,23 @@ export interface SendMoneySectionProps {
 }
 
 export default function SendMoneySection({ accounts }: SendMoneySectionProps) {
-  const [showAccount, setShowAccount] = useState(false);
+    const [showAccounts, setShowAccounts] = useState<boolean[]>(new Array(accounts.length).fill(false));
 
   const copyAccountText = ({
     text,
-    prefix,
+      prefix,
+      index,
   }: {
     text: string;
-    prefix: string;
+          prefix: string;
+          index: number;
   }) => {
     navigator.clipboard.writeText(text).then(() => {
-      toast.success(`${prefix}측 계좌번호가 복사되었습니다!`);
+      toast.success(`${prefix} 계좌번호가 복사되었습니다!`);
     });
-    if (!showAccount) setShowAccount(!showAccount);
+      const newShowAccounts = [...showAccounts];
+      newShowAccounts[index] = !newShowAccounts[index];
+      setShowAccounts(newShowAccounts);
   };
 
   return (
@@ -38,21 +42,22 @@ export default function SendMoneySection({ accounts }: SendMoneySectionProps) {
 
       {/* 축하의 마음을 담아 축의금을 전달해보세요 */}
       <div className="text-balance break-keep text-4xl leading-[4rem] !my-12">
-        마음 전달하는 곳
+        마음 전하실 곳
       </div>
 
       {accounts.map((account, index) => (
         <TinySendMoneyItem
           key={index}
           prefix={account.prefix}
-          showAccount={showAccount}
+          showAccount={showAccounts[index]}
           bankName={account.bankName}
           accountNumber={account.accountNumber}
           name={account.name}
           onClick={() => {
             copyAccountText({
               text: `${account.bankName} ${account.accountNumber} ${account.name}`,
-              prefix: account.prefix,
+                prefix: account.prefix,
+              index,
             });
           }}
           style={{
@@ -88,7 +93,7 @@ export const TinySendMoneyItem = ({
   return (
     <div className="flex flex-row gap-8 items-center w-full px-12 justify-between">
       <span className="text-5xl mr-4 shrink-0" aria-hidden>
-        {prefix}측 마음
+        {prefix}
       </span>
       <button
         onClick={onClick}
