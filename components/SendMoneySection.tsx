@@ -14,23 +14,25 @@ export interface SendMoneySectionProps {
 }
 
 export default function SendMoneySection({ accounts }: SendMoneySectionProps) {
-    const [showAccounts, setShowAccounts] = useState<boolean[]>(new Array(accounts.length).fill(false));
+  const [showAccounts, setShowAccounts] = useState<boolean[]>(
+    new Array(accounts.length).fill(false)
+  );
 
   const copyAccountText = ({
     text,
-      prefix,
-      index,
+    prefix,
+    index,
   }: {
     text: string;
-          prefix: string;
-          index: number;
+    prefix: string;
+    index: number;
   }) => {
     navigator.clipboard.writeText(text).then(() => {
       toast.success(`${prefix} 계좌번호가 복사되었습니다!`);
     });
-      const newShowAccounts = [...showAccounts];
-      newShowAccounts[index] = !newShowAccounts[index];
-      setShowAccounts(newShowAccounts);
+    const newShowAccounts = [...showAccounts];
+    newShowAccounts[index] = !newShowAccounts[index];
+    setShowAccounts(newShowAccounts);
   };
 
   return (
@@ -56,7 +58,7 @@ export default function SendMoneySection({ accounts }: SendMoneySectionProps) {
           onClick={() => {
             copyAccountText({
               text: `${account.bankName} ${account.accountNumber} ${account.name}`,
-                prefix: account.prefix,
+              prefix: account.prefix,
               index,
             });
           }}

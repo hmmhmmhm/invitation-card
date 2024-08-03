@@ -4,21 +4,11 @@ import Link from "next/link";
 export interface LocationSectionProps {
   locationTitle: string;
   locationAddress: string;
-  locationTel: string;
   mapImageUrl: string;
   tmapUrl?: string;
   kakaoNaviUrl?: string;
   naverMapUrl: string;
   kakaoMapUrl?: string;
-  /*transportationInfo?: {
-    address?: string;
-    phone?: string;
-    subway?: string;
-    shuttleBus?: string;
-    bus?: string[];
-    car?: string;
-    parking?: string;
-  };*/
 }
 
 export default function LocationSection({
@@ -30,7 +20,6 @@ export default function LocationSection({
   kakaoNaviUrl,
   naverMapUrl,
   kakaoMapUrl,
- // transportationInfo,
 }: LocationSectionProps) {
   return (
     <section
@@ -52,25 +41,8 @@ export default function LocationSection({
             {locationTitle}
           </p>
           <p aria-label={locationAddress}>{locationAddress}</p>
-          {/*<p aria-label={`Tel. ${locationTel}`}>Tel. {locationTel}</p>*/}
         </div>
-        <div>
-          {/* <Link href={`tel:${locationTel}`}>
-            <button
-              type="button"
-              className="flex justify-center items-center gap-2 w-36 h-36 bg-[#6EBD52] rounded-full shadow-lg"
-              style={{ backgroundColor: "#F9A8D4" }}
-            >
-              <IconPhoneCall
-                size="5rem"
-                stroke={1.5}
-                color="transparent"
-                fill="white"
-                aria-label="예식장에 전화하기"
-              />
-            </button>
-          </Link>*/}
-        </div>
+        <div></div>
       </div>
 
       <Link href={naverMapUrl} target="_blank" rel="noopener noreferrer">
@@ -151,7 +123,7 @@ export default function LocationSection({
         )}
       </div>
 
-    {/*  <div className="flex flex-row gap-3 text-3xl text-[#4A3C35] border-[#D4BDA2] border-b-[1px] pb-3 uppercase tracking-[0.188rem] mb-16 justify-center mt-24">
+      {/*  <div className="flex flex-row gap-3 text-3xl text-[#4A3C35] border-[#D4BDA2] border-b-[1px] pb-3 uppercase tracking-[0.188rem] mb-16 justify-center mt-24">
         <p aria-hidden>Transportation</p>
       </div>
       <div className="flex flex-col w-full p-6 bg-[#FBE2E4] text-[#665743]">
