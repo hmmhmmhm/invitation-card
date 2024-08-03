@@ -101,7 +101,7 @@ export default function Home() {
           kakaoMapUrl="https://place.map.kakao.com/2009675378"
           naverMapUrl="https://naver.me/FHYuAgm6"
           kakaoNaviUrl="https://place.map.kakao.com/2009675378"
-          transportationInfo={{
+          /*transportationInfo={{
             address: "서울특별시 강남구 언주로 508 (역삼동 701번지)",
             phone: "02-564-5757",
             subway: "“선릉역” 5번 출구 도보 5분",
@@ -112,22 +112,9 @@ export default function Home() {
             ],
             car: "“서울상록회관” 또는 “서울시 강남구 언주로 508” 입력",
             parking: "동시 950대 주차 가능",
-          }}
+          }*/
               />
-
-        <CalendarSection eventDate={eventDate} />
-
-              <GallerySection
-                  images={[
-                      { src: "/wedding/lsh-0239.webp", alt: "" },
-                      { src: "/wedding/lsh-0050.webp", alt: "" },
-                      { src: "/wedding/lsh-0844.webp", alt: "" },
-                      { src: "/wedding/lsh-1056.webp", alt: "" },
-                      { src: "/wedding/lsh-1102.webp", alt: "" },
-                  ]}
-              />
-
-        {/*<div className="flex w-full justify-center -mt-32 mb-40">
+        <div className="flex w-full justify-center -mt-32 mb-40">
           <Link
             href="/hotel-direction.pdf"
             target="_blank"
@@ -140,7 +127,25 @@ export default function Home() {
               예식장 약도 보기 PDF
             </button>
           </Link>
-        </div>*/}
+        </div>
+
+        <CalendarSection eventDate={eventDate} />
+
+              <GallerySection
+                  images={[
+                      { src: "/wedding/lsh-0239.webp", alt: "" },
+                      { src: "/wedding/lsh-0050.webp", alt: "" },
+                      { src: "/wedding/lsh-0844.webp", alt: "" },
+                      { src: "/wedding/lsh-1056.webp", alt: "" },
+                      { src: "/wedding/lsh-1102.webp", alt: "" },
+                      { src: "/wedding/lsh-0239.webp", alt: "" },
+                      { src: "/wedding/lsh-0050.webp", alt: "" },
+                      { src: "/wedding/lsh-0844.webp", alt: "" },
+                      { src: "/wedding/lsh-1056.webp", alt: "" },
+                      { src: "/wedding/lsh-1102.webp", alt: "" },
+                  ]}
+              />
+
 
         {/*
         {<MovieSection description="두 사람의 아름다운 시작을 함께 해주세요.">
