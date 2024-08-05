@@ -14,7 +14,6 @@ export interface LocationSectionProps {
 export default function LocationSection({
   locationTitle,
   locationAddress,
-  locationTel,
   mapImageUrl,
   tmapUrl,
   kakaoNaviUrl,

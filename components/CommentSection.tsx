@@ -30,55 +30,81 @@ export default function CommentSection() {
   >([]);
   const perPage = 10;
 
-  useEffect(() => {
+  const updateListCount = async () => {
     setLoading(true);
-    fetch("https://invitation-card-api.up.railway.app/v1/invitation/count", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        apiKey,
-      }),
-    }).then(async (response) => {
-      const count = Number(await response.text());
+    try {
+      await fetch(
+        "https://invitation-card-api.up.railway.app/v1/invitation/count",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            apiKey,
+          }),
+        }
+      ).then(async (response) => {
+        const count = Number(await response.text());
 
-      if (Number.isNaN(count)) {
-        console.error("Invalid count");
+        if (Number.isNaN(count)) {
+          console.error("Invalid count");
+          setLoading(false);
+          return;
+        }
+
+        setListCount(count);
         setLoading(false);
-        return;
-      }
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
-      setListCount(count);
-      setLoading(false);
-    });
+  useEffect(() => {
+    updateListCount();
   }, [currentPage]);
 
-  useEffect(() => {
+  const updateList = async () => {
     setLoading(true);
-    fetch("https://invitation-card-api.up.railway.app/v1/invitation/list", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        apiKey,
-        count: perPage - 1,
-        offset: (currentPage - 1) * perPage,
-        newest,
-      }),
-    }).then(async (response) => {
-      const list = await response.json();
+    try {
+      await fetch(
+        "https://invitation-card-api.up.railway.app/v1/invitation/list",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            apiKey,
+            count: perPage - 1,
+            offset: (currentPage - 1) * perPage,
+            newest,
+          }),
+        }
+      )
+        .then(async (response) => {
+          const list = await response.json();
 
-      if (!Array.isArray(list)) {
-        console.error("Invalid list");
-        setLoading(false);
-        return;
-      }
+          if (!Array.isArray(list)) {
+            console.error("Invalid list");
+            setLoading(false);
+            return;
+          }
 
-      setList(list.reverse());
-      setLoading(false);
-    });
+          setList(list.reverse());
+          setLoading(false);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    updateList();
   }, [currentPage, newest]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -99,7 +125,36 @@ export default function CommentSection() {
 
     console.log({ name, affiliation, comment });
 
-    event.currentTarget.reset();
+    setLoading(true);
+    try {
+      fetch("https://invitation-card-api.up.railway.app/v1/invitation/report", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          apiKey,
+          message: comment,
+          score: 0,
+          user_from: affiliation,
+          user_name: name,
+        }),
+      }).then(async () => {
+        setCurrentPage(1);
+        setNewest(true);
+        try {
+          await updateListCount();
+          await updateList();
+        } catch (e) {
+          console.log(e);
+        }
+
+        setLoading(false);
+      });
+      event.currentTarget?.reset();
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
