@@ -242,7 +242,7 @@ export default function CommentSection() {
                         <span>{entry.user_from}</span>
                       </>
                     )}
-                    {entry.score && (
+                    {entry.score && entry.score > 0 && (
                       <>
                         <span className="mx-4 text-[#F68DA7]">/</span>
                         <span>{entry.score}점</span>
