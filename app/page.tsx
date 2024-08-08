@@ -137,11 +137,6 @@ export default function Home() {
             { src: "/wedding/lsh-0844.webp", alt: "" },
             { src: "/wedding/lsh-1056.webp", alt: "" },
             { src: "/wedding/lsh-1102.webp", alt: "" },
-            { src: "/wedding/lsh-0239.webp", alt: "" },
-            { src: "/wedding/lsh-0050.webp", alt: "" },
-            { src: "/wedding/lsh-0844.webp", alt: "" },
-            { src: "/wedding/lsh-1056.webp", alt: "" },
-            { src: "/wedding/lsh-1102.webp", alt: "" },
           ]}
         />
 
@@ -230,13 +225,7 @@ export default function Home() {
                 name: "최지은",
                 color: "#f9a8d4",
               },
-              {
-                prefix: "신부측",
-                bankName: "카카오뱅크",
-                accountNumber: "3333-10-4286822",
-                name: "박성준",
-                color: "#f9a8d4",
-              },
+              
             ]}
           />
         )}
