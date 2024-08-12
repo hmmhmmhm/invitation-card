@@ -137,6 +137,8 @@ export default function Home() {
             { src: "/wedding/lsh-0844.webp", alt: "" },
             { src: "/wedding/lsh-1056.webp", alt: "" },
             { src: "/wedding/lsh-1102.webp", alt: "" },
+            { src: "/wedding/01.webp", alt: "" },
+            { src: "/wedding/02.webp", alt: "" },
           ]}
         />
 
