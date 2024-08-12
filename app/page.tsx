@@ -25,7 +25,7 @@ const GallerySection = dynamic(() => import("@/components/GallerySection"), {
 
 export default function Home() {
   const searchParams = useSearchParams();
-  const nogaejwa = searchParams.get("nogaejwa");
+  const nogaejwa = searchParams.get("noaccount");
 
   // * 로컬 시간대를 무시하고 한국 시간대로 고정
   const eventDate = forceUtc({
@@ -207,25 +207,31 @@ export default function Home() {
               {
                 prefix: "신랑",
                 bankName: "카카오뱅크",
-                accountNumber: "7942-04-21509",
+                accountNumber: "79420421509",
                 name: "박성준",
                 color: "#B7D06E",
               },
               {
                 prefix: "신랑측",
                 bankName: "하나은행",
-                accountNumber: "311-18-079747",
+                accountNumber: "31118079747",
                 name: "박원식",
                 color: "#B7D06E",
               },
               {
                 prefix: "신부",
                 bankName: "카카오뱅크",
-                accountNumber: "7942-04-35823",
+                accountNumber: "79420435823",
                 name: "최지은",
                 color: "#f9a8d4",
               },
-              
+              {
+                prefix: "신부측",
+                bankName: "하나은행",
+                accountNumber: "35791063194107",
+                name: "최병옥",
+                color: "#f9a8d4",
+              }
             ]}
           />
         )}
