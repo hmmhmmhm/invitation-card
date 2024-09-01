@@ -136,12 +136,12 @@ export default function Home() {
                       { src: "/wedding/011.webp", alt: "" },
                       { src: "/wedding/019.webp", alt: "" },
                       { src: "/wedding/009.webp", alt: "" },
-                      { src: "/wedding/010.webp", alt: "" },
-                      { src: "/wedding/022.webp", alt: "" },
-                      { src: "/wedding/020.webp", alt: "" },
                       { src: "/wedding/001.webp", alt: "" },
                       { src: "/wedding/016.webp", alt: "" },
                       { src: "/wedding/012.webp", alt: "" },
+                      { src: "/wedding/010.webp", alt: "" },
+                      { src: "/wedding/022.webp", alt: "" },
+                      { src: "/wedding/020.webp", alt: "" },
           ]}
         />
 
