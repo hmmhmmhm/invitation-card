@@ -48,12 +48,12 @@ export default function Home() {
         <IntroSection eventDate={eventDate} names={["박성준", "최지은"]} />
 
         <WeddingPhotoSection
-          src="/wedding/001.webp"
+          src="/wedding/006.webp"
           alt=""
           onClick={() => {
             (
               document.querySelector(
-                'a[href="/wedding/001.webp"]'
+                'a[href="/wedding/006.webp"]'
               ) as HTMLAnchorElement
             )?.click();
           }}
@@ -139,7 +139,7 @@ export default function Home() {
                       { src: "/wedding/010.webp", alt: "" },
                       { src: "/wedding/022.webp", alt: "" },
                       { src: "/wedding/020.webp", alt: "" },
-                      { src: "/wedding/006.webp", alt: "" },
+                      { src: "/wedding/001.webp", alt: "" },
                       { src: "/wedding/016.webp", alt: "" },
                       { src: "/wedding/012.webp", alt: "" },
           ]}
