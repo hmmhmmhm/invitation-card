@@ -48,12 +48,12 @@ export default function Home() {
         <IntroSection eventDate={eventDate} names={["박성준", "최지은"]} />
 
         <WeddingPhotoSection
-          src="/wedding/lsh-0239.webp"
+          src="/wedding/001.webp"
           alt=""
           onClick={() => {
             (
               document.querySelector(
-                'a[href="/wedding/lsh-0239.webp"]'
+                'a[href="/wedding/001.webp"]'
               ) as HTMLAnchorElement
             )?.click();
           }}
@@ -132,13 +132,16 @@ export default function Home() {
 
         <GallerySection
           images={[
-            { src: "/wedding/lsh-0239.webp", alt: "" },
-            { src: "/wedding/lsh-0050.webp", alt: "" },
-            { src: "/wedding/lsh-0844.webp", alt: "" },
-            { src: "/wedding/lsh-1056.webp", alt: "" },
-            { src: "/wedding/lsh-1102.webp", alt: "" },
-            { src: "/wedding/01.webp", alt: "" },
-            { src: "/wedding/02.webp", alt: "" },
+                     
+                      { src: "/wedding/011.webp", alt: "" },
+                      { src: "/wedding/019.webp", alt: "" },
+                      { src: "/wedding/009.webp", alt: "" },
+                      { src: "/wedding/010.webp", alt: "" },
+                      { src: "/wedding/022.webp", alt: "" },
+                      { src: "/wedding/020.webp", alt: "" },
+                      { src: "/wedding/006.webp", alt: "" },
+                      { src: "/wedding/016.webp", alt: "" },
+                      { src: "/wedding/012.webp", alt: "" },
           ]}
         />
 
