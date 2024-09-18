@@ -14,7 +14,37 @@ export const metadata: Metadata = {
   title: "박성준 · 최지은 청첩장",
   description: "박성준 · 최지은의 결혼식에 초대합니다.",
   abstract: "박성준 · 최지은 청첩장",
-  keywords: ["웨딩", "결혼식", "청첩장"],
+  keywords: ["웨딩", "결혼식", "청첩장", "박성준", "최지은", "모바일 청첩장"],
+  robots: "index, follow",
+  referrer: "origin",
+  openGraph: {
+    title: "박성준 · 최지은 청첩장",
+    siteName: "박성준 · 최지은 청첩장",
+    description: "박성준 · 최지은의 결혼식에 초대합니다.",
+    locale: "ko_KR",
+    type: "website",
+    images: [
+      {
+        url: "https://invitation-card-nine.vercel.app/og.png",
+        width: 1200,
+        height: 630,
+        alt: "모바일 청첩장",
+      },
+    ],
+  },
+  twitter: {
+    title: "박성준 · 최지은 청첩장",
+    card: "summary_large_image",
+    description: "박성준 · 최지은의 결혼식에 초대합니다.",
+    images: [
+      {
+        url: "https://invitation-card-nine.vercel.app/og.png",
+        width: 1200,
+        height: 630,
+        alt: "모바일 청첩장",
+      },
+    ],
+  },
 };
 
 export const viewport: Viewport = {
