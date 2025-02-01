@@ -206,7 +206,7 @@ export default function Home() {
 
         <CommentSection />
 
-        {nogaejwa === null && (
+        {/*{nogaejwa === null && (
           <SendMoneySection
             accounts={[
               {
@@ -239,7 +239,7 @@ export default function Home() {
               }
             ]}
           />
-        )}
+        )}*/}
       </div>
     </main>
   );
